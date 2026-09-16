@@ -50,7 +50,7 @@ Virtual networking. Network interfaces. IP addresses. SSH. Package management. S
 
 At one point I was staring at the Ubuntu installer wondering why it was talking about **Ethernet when my Mac wasn't connected to Ethernet**.
 
-A small indication of what was coming.
+A small indication of what was coming...
 
 ## 🔑 The first satisfying moment
 
