@@ -42,7 +42,13 @@ The rabbit holes involving cables, networking, configuration, documentation, que
 
 <!-- LATEST:START -->
 
-> 🤖 **Generated automatically:** The latest entries from across the pit will appear here.
+> 🤖 **Generated automatically:** The latest entries from across the pit.
+
+| Type | # | Date | Entry |
+|---|---:|---|---|
+| 🔧 Troubleshooting | `TS01` | 2026-09-16 | [I just wanted Ethernet in the living room](diary/troubleshooting/TS01-i-just-wanted-ethernet-in-the-living-room.md) |
+| 🚨 Incident | `II01` | 2026-09-13 | [Well, that didn't take long](diary/incidents/II01-freebox-step-6.md) |
+| 📖 Diary | `0004` | 2026-09-13 | [Is everything still alive?](diary/2026/09/0004-is-everything-still-alive.md) |
 
 <!-- LATEST:END -->
 
