@@ -8,6 +8,9 @@ The main diary follows the homelab roughly in the order it happened.
 
 | # | Date | Entry |
 |---:|---|---|
+| `0007` | 2026-09-16 | [My photos live here now](2026/09/0007-my-photos-live-here-now.md) |
+| `0006` | 2026-09-15 | [I should probably back this up](2026/09/0006-i-should-probably-back-this-up.md) |
+| `0005` | 2026-09-14 | [I wanted a dashboard](2026/09/0005-i-wanted-a-dashboard.md) |
 | `0004` | 2026-09-13 | [Is everything still alive?](2026/09/0004-is-everything-still-alive.md) |
 | `0003` | 2026-09-12 | [I only wanted the warning to go away](2026/09/0003-i-only-wanted-the-warning-to-go-away.md) |
 | `0002` | 2026-09-11 | [Okay, but what do I actually host?](2026/09/0002-okay-but-what-do-i-actually-host.md) |

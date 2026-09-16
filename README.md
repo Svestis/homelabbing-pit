@@ -47,8 +47,8 @@ The rabbit holes involving cables, networking, configuration, documentation, que
 | Type | # | Date | Entry |
 |---|---:|---|---|
 | 🔧 Troubleshooting | `TS01` | 2026-09-16 | [I just wanted Ethernet in the living room](diary/troubleshooting/TS01-i-just-wanted-ethernet-in-the-living-room.md) |
-| 🚨 Incident | `II01` | 2026-09-13 | [Well, that didn't take long](diary/incidents/II01-freebox-step-6.md) |
-| 📖 Diary | `0004` | 2026-09-13 | [Is everything still alive?](diary/2026/09/0004-is-everything-still-alive.md) |
+| 📖 Diary | `0007` | 2026-09-16 | [My photos live here now](diary/2026/09/0007-my-photos-live-here-now.md) |
+| 📖 Diary | `0006` | 2026-09-15 | [I should probably back this up](diary/2026/09/0006-i-should-probably-back-this-up.md) |
 
 <!-- LATEST:END -->
 
