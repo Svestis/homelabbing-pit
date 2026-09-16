@@ -26,7 +26,21 @@ jobs:
           python-version: "3.x"
 
       - name: Generate diary index
-        run: python3 scripts/update-diary-index.py
+        run: |
+          echo "=== Diary files ==="
+          find diary -type f -name "*.md" -print
+
+          echo ""
+          echo "=== Running generator ==="
+          python3 scripts/update-diary-index.py
+
+          echo ""
+          echo "=== Generated README ==="
+          cat diary/README.md
+
+          echo ""
+          echo "=== Git diff ==="
+          git diff -- diary/README.md
 
       - name: Commit diary index
         run: |
