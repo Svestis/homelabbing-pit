@@ -1,4 +1,9 @@
-# 🕳️ Homelabbing Pit
+
+
+<p align="center">
+  <img src="assets/homelabbing-pit.png" alt="Homelabbing Pit" width="100%">
+</p>
+
 My descent into the bottomless pit of homelabbing.
 
 
