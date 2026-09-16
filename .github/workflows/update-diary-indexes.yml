@@ -1,0 +1,74 @@
+name: Update diary indexes
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      # Main diary entries
+      - "diary/20[0-9][0-9]/[0-9][0-9]/*.md"
+
+      # Incident records
+      - "diary/incidents/II*.md"
+
+      # Troubleshooting records
+      - "diary/troubleshooting/TS*.md"
+
+      # Index generators
+      - "scripts/update-diary-index.py"
+      - "scripts/update-incidents-index.py"
+      - "scripts/update-troubleshooting-index.py"
+      - "scripts/update-latest.py"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-diary-indexes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate diary index
+        run: python3 scripts/update-diary-index.py
+
+      - name: Generate incidents index
+        run: python3 scripts/update-incidents-index.py
+
+      - name: Generate troubleshooting index
+        run: python3 scripts/update-troubleshooting-index.py
+
+      - name: Generate latest entries
+        run: python3 scripts/update-latest.py
+
+      - name: Commit generated indexes
+        run: |
+          if git diff --quiet -- \
+            README.md \
+            diary/README.md \
+            diary/incidents/README.md \
+            diary/troubleshooting/README.md; then
+            echo "All indexes rebuilt successfully — no changes required."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            README.md \
+            diary/README.md \
+            diary/incidents/README.md \
+            diary/troubleshooting/README.md
+
+          git commit -m "docs: rebuild diary indexes"
+          git push

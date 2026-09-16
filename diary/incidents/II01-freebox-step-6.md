@@ -2,6 +2,7 @@
 entry: II01
 title: "Well, that didn't take long"
 date: 2026-09-13
+status: complete
 tags:
   - uptime-kuma
   - freebox
@@ -9,7 +10,6 @@ tags:
   - monitoring
   - outage
   - troubleshooting
-status: complete
 ---
 
 # II01 — Well, that didn't take long

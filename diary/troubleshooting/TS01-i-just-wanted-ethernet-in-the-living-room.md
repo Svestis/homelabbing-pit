@@ -2,6 +2,7 @@
 entry: TS01
 title: "I just wanted Ethernet in the living room"
 date: 2026-09-16
+status: resolved
 category: networking
 tags:
   - ethernet
@@ -12,7 +13,6 @@ tags:
   - cabling
   - network-testing
   - troubleshooting
-status: resolved
 ---
 
 # TS01 — I just wanted Ethernet in the living room
