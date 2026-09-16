@@ -42,13 +42,7 @@ The rabbit holes involving cables, networking, configuration, documentation, que
 
 <!-- LATEST:START -->
 
-> 🤖 **Generated automatically:** The latest entries from across the pit.
-
-| Type | # | Date | Entry |
-|---|---:|---|---|
-| 🔧 Troubleshooting | `TS01` | 2026-09-16 | [I just wanted Ethernet in the living room](diary/troubleshooting/TS01-i-just-wanted-ethernet-in-the-living-room.md) |
-| 🚨 Incident | `II01` | 2026-09-13 | [Well, that didn't take long](diary/incidents/II01-freebox-step-6.md) |
-| 📖 Diary | `0004` | 2026-09-13 | [Is everything still alive?](diary/2026/09/0004-is-everything-still-alive.md) |
+> 🤖 **Generated automatically:** The latest entries from across the pit will appear here.
 
 <!-- LATEST:END -->
 
@@ -56,26 +50,10 @@ The rabbit holes involving cables, networking, configuration, documentation, que
 
 The pit currently looks roughly like this:
 
-```text
-                         🕳️ THE PIT
-                              │
-                       Ubuntu Server
-                              │
-                            Docker
-                              │
-                           Cockpit
-                              │
-              ┌───────────────┼───────────────┐
-              │               │               │
-          Services        Monitoring       Backups
-              │               │               │
-       Home Assistant    Uptime Kuma        Kopia
-       Portainer         Glances
-       Homepage
-       Immich
-       Caddy
-       Immich
-```
+<p align="center">
+  <img src="assets/the-pit.png" alt="The Pit" width="100%">
+</p>
+
 
 This is deliberately a snapshot rather than a specification.
 
@@ -94,8 +72,8 @@ homelabbing-pit/
 │
 ├── architecture/              # diagrams and architecture snapshots
 ├── assets/                    # images and other repository assets
-├── scripts/                   # repository automation
-└── telemetry/                 # sanitized homelab data
+├── scripts/                   # keeping the pit organised
+└── telemetry/                 # the pit is talking to the world
 ```
 
 The indexes under `diary/` are generated automatically from the metadata in each entry.
