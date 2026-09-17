@@ -46,9 +46,9 @@ The rabbit holes involving cables, networking, configuration, documentation, que
 
 | Type | # | Date | Entry |
 |---|---:|---|---|
+| 📖 Diary | `0008` | 2026-09-17 | [The homelab needs a screen](diary/2026/09/0008-the-homelab-needs-a-screen.md) |
 | 🔧 Troubleshooting | `TS01` | 2026-09-16 | [I just wanted Ethernet in the living room](diary/troubleshooting/TS01-i-just-wanted-ethernet-in-the-living-room.md) |
 | 📖 Diary | `0007` | 2026-09-16 | [My photos live here now](diary/2026/09/0007-my-photos-live-here-now.md) |
-| 📖 Diary | `0006` | 2026-09-15 | [I should probably back this up](diary/2026/09/0006-i-should-probably-back-this-up.md) |
 
 <!-- LATEST:END -->
 
