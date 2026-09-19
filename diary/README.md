@@ -8,6 +8,7 @@ The main diary follows the homelab roughly in the order it happened.
 
 | # | Date | Entry |
 |---:|---|---|
+| `0010` | 2026-09-19 | [I should probably manage the host too](2026/09/0010-i-should-probably-manage-the-host-too.md) |
 | `0009` | 2026-09-18 | [Do I need a NAS?](2026/09/0009-do-i-need-a-nas.md) |
 | `0008` | 2026-09-17 | [The homelab needs a screen](2026/09/0008-the-homelab-needs-a-screen.md) |
 | `0007` | 2026-09-16 | [My photos live here now](2026/09/0007-my-photos-live-here-now.md) |
