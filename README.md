@@ -24,9 +24,8 @@ This isn't meant to be a tutorial or a polished guide. It's the story of my home
 
 | Type | # | Date | Entry |
 |---|---:|---|---|
-| 📖 Diary | `0010` | 2026-09-19 | [I should probably manage the host too](diary/2026/09/0010-i-should-probably-manage-the-host-too.md) |
-| 📖 Diary | `0009` | 2026-09-18 | [Do I need a NAS?](diary/2026/09/0009-do-i-need-a-nas.md) |
-| 📖 Diary | `0008` | 2026-09-17 | [The homelab needs a screen](diary/2026/09/0008-the-homelab-needs-a-screen.md) |
+| 🔧 Troubleshooting | `TS01` | 2026-09-16 | [I just wanted Ethernet in the living room](diary/troubleshooting/TS01-i-just-wanted-ethernet-in-the-living-room.md) |
+| 🚨 Incident | `II01` | 2026-09-13 | [Well, that didn't take long](diary/incidents/II01-freebox-step-6.md) |
 
 <!-- LATEST:END -->
 
