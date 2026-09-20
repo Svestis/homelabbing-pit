@@ -8,7 +8,6 @@ Things that didn't necessarily break on their own, but somehow ended with me tes
 
 | # | Date | Investigation | Status |
 |---:|---|---|---|
-| `TS02` | 2026-09-21 | [Testing the rabbit hole](TS02-testing-the-rabbit-hole.md) | Test |
 | `TS01` | 2026-09-16 | [I just wanted Ethernet in the living room](TS01-i-just-wanted-ethernet-in-the-living-room.md) | Resolved |
 
 ---
