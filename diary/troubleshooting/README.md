@@ -12,4 +12,4 @@ Things that didn't necessarily break on their own, but somehow ended with me tes
 
 ---
 
-[← Back to the diary](../README.md)
+[← Back to the diary](../)
