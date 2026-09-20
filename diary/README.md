@@ -38,4 +38,4 @@ Along the way, some things broke, some problems became investigations of their o
 
 ---
 
-[← Back to the main page](../)
+[← Back to the main page](../README.md)

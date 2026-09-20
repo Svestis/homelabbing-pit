@@ -117,7 +117,7 @@ def build_readme(records):
             "",
             "---",
             "",
-            "[← Back to the diary](../)",
+            "[← Back to the diary](../README.md)",
             "",
         ]
     )
