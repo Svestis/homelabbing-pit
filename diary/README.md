@@ -10,7 +10,7 @@ Along the way, some things broke, some problems became investigations of their o
 
 | | Path | What's in there |
 |---|---|---|
-| 📖 | **Entries** | The chronological homelab story |
+| 📖 | [**Entries**](entries/) | The chronological homelab story |
 | 🚨 | [**Incidents**](incidents/) | Things that broke unexpectedly |
 | 🔧 | [**Troubleshooting**](troubleshooting/) | Problems that became investigations |
 | 🧪 | [**Projects**](projects/) | Things that refused to fit into one entry |
