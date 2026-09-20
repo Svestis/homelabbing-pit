@@ -8,7 +8,6 @@ Unexpected outages, failures, and other things that decided to become part of th
 
 | # | Date | Incident | Status |
 |---:|---|---|---|
-| `II03` | 2026-09-21 | [Testing the alarm](II03-testing-the-alarm.md) | Test |
 | `II02` | 2026-09-20 | [Kopia woke up before the clock](II02-kopia-woke-up-before-the-clock.md) | Resolved |
 | `II01` | 2026-09-13 | [Well, that didn't take long](II01-freebox-step-6.md) | Complete |
 
