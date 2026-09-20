@@ -16,6 +16,21 @@ This is where I keep track of what I built, what I tried, what broke, what I lea
 
 This isn't meant to be a tutorial or a polished guide. It's the story of my homelab as it evolves — including the mistakes, questionable decisions, and *"while I'm here, I might as well..."* moments.
 
+## 🕳️ Latest from the pit
+
+<!-- LATEST:START -->
+
+> 🤖 **Generated automatically:** The latest entries from across the pit.
+
+| Type | # | Date | Entry |
+|---|---:|---|---|
+| 📖 Diary | `0010` | 2026-09-19 | [I should probably manage the host too](diary/2026/09/0010-i-should-probably-manage-the-host-too.md) |
+| 📖 Diary | `0009` | 2026-09-18 | [Do I need a NAS?](diary/2026/09/0009-do-i-need-a-nas.md) |
+| 📖 Diary | `0008` | 2026-09-17 | [The homelab needs a screen](diary/2026/09/0008-the-homelab-needs-a-screen.md) |
+
+<!-- LATEST:END -->
+
+
 ## ⛏️ Start digging
 
 There are a few different ways things end up documented here.
@@ -37,20 +52,6 @@ Outages, failures, unexpected behaviour, and those moments when the infrastructu
 Problems that became investigations of their own.
 
 The rabbit holes involving cables, networking, configuration, documentation, questionable assumptions, and eventually — hopefully — an explanation.
-
-## 🕳️ Latest from the pit
-
-<!-- LATEST:START -->
-
-> 🤖 **Generated automatically:** The latest entries from across the pit.
-
-| Type | # | Date | Entry |
-|---|---:|---|---|
-| 📖 Diary | `0010` | 2026-09-19 | [I should probably manage the host too](diary/2026/09/0010-i-should-probably-manage-the-host-too.md) |
-| 📖 Diary | `0009` | 2026-09-18 | [Do I need a NAS?](diary/2026/09/0009-do-i-need-a-nas.md) |
-| 📖 Diary | `0008` | 2026-09-17 | [The homelab needs a screen](diary/2026/09/0008-the-homelab-needs-a-screen.md) |
-
-<!-- LATEST:END -->
 
 ## 🏗️ What is this running on?
 
