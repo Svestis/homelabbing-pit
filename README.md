@@ -74,20 +74,20 @@ The homelab keeps changing. That's rather the point.
 
 ## 🗂️ Repository map
 
-```text
+<pre>
 homelabbing-pit/
-├── diary/
-│   ├── README.md
-│   ├── YYYY/
-│   │   └── MM/                # the main descent
-│   ├── incidents/             # things broke
-│   └── troubleshooting/       # why did that happen?
+├── <a href="diary/">diary/</a>
+│   ├── <a href="diary/README.md">README.md</a>                 # where the story starts
+│   ├── <a href="diary/entries/">entries/</a>                  # the main descent
+│   ├── <a href="diary/incidents/">incidents/</a>                # things broke
+│   ├── <a href="diary/troubleshooting/">troubleshooting/</a>          # why did that happen?
+│   └── <a href="diary/projects/">projects/</a>                 # things that kept growing
 │
-├── architecture/              # diagrams and architecture snapshots
-├── assets/                    # images and other repository assets
-├── scripts/                   # keeping the pit organised
-└── telemetry/                 # the pit is talking to the world
-```
+├── <a href="architecture/">architecture/</a>              # diagrams and architecture snapshots
+├── <a href="assets/">assets/</a>                    # images and other repository assets
+├── <a href="scripts/">scripts/</a>                   # keeping the pit organised
+└── <a href="telemetry/">telemetry/</a>                 # the pit is talking to the world
+</pre>
 
 The indexes under `diary/` are generated automatically from the metadata in each entry.
 
