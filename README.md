@@ -119,4 +119,22 @@ This is the complete index of everything documented in the pit.
 
 <!-- PIT-INDEX:START -->
 
+> 🤖 **Generated automatically:** This index is rebuilt from repository metadata.
+
+| Type | # | Date | Entry |
+|---|---:|---|---|
+| 🚨 Incident | `II02` | 2026-09-20 | [Kopia woke up before the clock](diary/incidents/II02-kopia-woke-up-before-the-clock.md) |
+| 📖 Diary | `0010` | 2026-09-19 | [I should probably manage the host too](diary/entries/0010-i-should-probably-manage-the-host-too.md) |
+| 📖 Diary | `0009` | 2026-09-18 | [Do I need a NAS?](diary/entries/0009-do-i-need-a-nas.md) |
+| 📖 Diary | `0008` | 2026-09-17 | [The homelab needs a screen](diary/entries/0008-the-homelab-needs-a-screen.md) |
+| 🔧 Troubleshooting | `TS01` | 2026-09-16 | [I just wanted Ethernet in the living room](diary/troubleshooting/TS01-i-just-wanted-ethernet-in-the-living-room.md) |
+| 📖 Diary | `0007` | 2026-09-16 | [My photos live here now](diary/entries/0007-my-photos-live-here-now.md) |
+| 📖 Diary | `0006` | 2026-09-15 | [I should probably back this up](diary/entries/0006-i-should-probably-back-this-up.md) |
+| 📖 Diary | `0005` | 2026-09-14 | [I wanted a dashboard](diary/entries/0005-i-wanted-a-dashboard.md) |
+| 🚨 Incident | `II01` | 2026-09-13 | [Well, that didn't take long](diary/incidents/II01-freebox-step-6.md) |
+| 📖 Diary | `0004` | 2026-09-13 | [Is everything still alive?](diary/entries/0004-is-everything-still-alive.md) |
+| 📖 Diary | `0003` | 2026-09-12 | [I only wanted the warning to go away](diary/entries/0003-i-only-wanted-the-warning-to-go-away.md) |
+| 📖 Diary | `0002` | 2026-09-11 | [Okay, but what do I actually host?](diary/entries/0002-okay-but-what-do-i-actually-host.md) |
+| 📖 Diary | `0001` | 2026-09-10 | [It started with an Ubuntu VM](diary/entries/0001-it-started-with-an-ubuntu-vm.md) |
+
 <!-- PIT-INDEX:END -->
