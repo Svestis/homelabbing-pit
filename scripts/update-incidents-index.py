@@ -114,7 +114,7 @@ def build_readme(incidents):
             "",
             "---",
             "",
-            "[← Back to the diary](../README.md)",
+            "[← Back to the diary](../)",
             "",
         ]
     )

@@ -13,5 +13,5 @@ Projects are different. They are the things that kept growing — builds, experi
 
 ---
 
-[← Back to the diary](../README.md)
+[← Back to the diary](../)
 

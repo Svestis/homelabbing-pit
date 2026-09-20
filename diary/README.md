@@ -38,4 +38,4 @@ Along the way, some things broke, some problems became investigations of their o
 
 ---
 
-[← Back to the main page](../README.md)
+[← Back to the main page](https://github.com/Svestis/homelabbing-pit/tree/main)
