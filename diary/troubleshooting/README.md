@@ -12,4 +12,4 @@ Things that didn't necessarily break on their own, but somehow ended with me tes
 
 ---
 
-🕳️ **Status:** somehow still troubleshooting. 🔧
+[← Back to the diary](../)

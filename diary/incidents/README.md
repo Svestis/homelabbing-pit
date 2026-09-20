@@ -13,4 +13,4 @@ Unexpected outages, failures, and other things that decided to become part of th
 
 ---
 
-🕳️ **Status:** incidents will happen.
+[← Back to the diary](../)
