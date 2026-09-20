@@ -39,7 +39,7 @@ There are a few different ways things end up documented here.
 
 The main story.
 
-What I built, added, changed, learned, broke on purpose, and occasionally managed to get working again.
+Follow the homelab from the first Ubuntu VM through everything I built, added, changed, learned, and probably didn't need.
 
 ### 🚨 [Infrastructure incidents](diary/incidents/)
 
@@ -52,6 +52,12 @@ Outages, failures, unexpected behaviour, and those moments when the infrastructu
 Problems that became investigations of their own.
 
 The rabbit holes involving cables, networking, configuration, documentation, questionable assumptions, and eventually — hopefully — an explanation.
+
+### 🧪 [Projects](diary/projects/)
+
+Things that refused to fit into a single diary entry.
+
+Longer-running builds, experiments, designs and enhancements that keep evolving while the main diary moves on.
 
 ## 🏗️ What is this running on?
 
