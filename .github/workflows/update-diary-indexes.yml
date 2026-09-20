@@ -6,7 +6,7 @@ on:
       - main
     paths:
       # Main diary entries
-      - "diary/20[0-9][0-9]/[0-9][0-9]/*.md"
+      - "diary/entries/*.md"
 
       # Incident records
       - "diary/incidents/II*.md"
