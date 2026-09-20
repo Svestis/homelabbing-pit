@@ -13,4 +13,4 @@ Unexpected outages, failures, and other things that decided to become part of th
 
 ---
 
-[← Back to the diary](../)
+[← Back to the diary](../README.md)
