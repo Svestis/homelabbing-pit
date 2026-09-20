@@ -1,10 +1,15 @@
 from pathlib import Path
 from datetime import datetime
+import re
 
 
 ROOT = Path(__file__).resolve().parent.parent
 DIARY_DIR = ROOT / "diary"
+ENTRIES_DIR = DIARY_DIR / "entries"
 README = DIARY_DIR / "README.md"
+
+START_MARKER = "<!-- DIARY-INDEX:START -->"
+END_MARKER = "<!-- DIARY-INDEX:END -->"
 
 
 def read_frontmatter(path: Path) -> dict:
@@ -39,11 +44,11 @@ def read_frontmatter(path: Path) -> dict:
 
 
 def find_entries():
-    """Find numbered diary entries under diary/YYYY/MM/."""
+    """Find numbered diary entries under diary/entries/."""
 
     entries = []
 
-    for path in DIARY_DIR.glob("20[0-9][0-9]/[0-9][0-9]/*.md"):
+    for path in ENTRIES_DIR.glob("[0-9][0-9][0-9][0-9]-*.md"):
         metadata = read_frontmatter(path)
 
         entry = metadata.get("entry")
@@ -51,14 +56,20 @@ def find_entries():
         title = metadata.get("title")
 
         if not entry or not date or not title:
-            print(f"Skipping {path}: missing entry, date, or title")
+            print(
+                f"Skipping {path}: "
+                "missing entry, date, or title"
+            )
             continue
 
         try:
             entry_number = int(entry)
             parsed_date = datetime.strptime(date, "%Y-%m-%d")
         except ValueError:
-            print(f"Skipping {path}: invalid entry number or date")
+            print(
+                f"Skipping {path}: "
+                "invalid entry number or date"
+            )
             continue
 
         entries.append(
@@ -71,7 +82,7 @@ def find_entries():
             }
         )
 
-    # Newest entry first.
+    # Newest numbered entry first.
     return sorted(
         entries,
         key=lambda item: item["entry_number"],
@@ -79,17 +90,12 @@ def find_entries():
     )
 
 
-def build_readme(entries):
-    """Generate the complete diary README from scratch."""
+def build_index(entries):
+    """Generate the diary index section."""
 
     lines = [
-        "# 📖 The Diary",
-        "",
-        "> From one innocent Ubuntu VM to... whatever this has become.",
-        "",
-        "The main diary follows the homelab roughly in the order it happened.",
-        "",
-        "> 🤖 **Generated automatically:** This index is rebuilt from the metadata in the diary entries.",
+        "> 🤖 **Generated automatically:** "
+        "This index is rebuilt from the metadata in the diary entries.",
         "",
         "| # | Date | Entry |",
         "|---:|---|---|",
@@ -104,17 +110,34 @@ def build_readme(entries):
             f"[{item['title']}]({relative_path}) |"
         )
 
-    lines.extend(
-        [
-            "",
-            "---",
-            "",
-            "🕳️ **Status:** still digging. ⛏️",
-            "",
-        ]
+    return "\n".join(lines)
+
+
+def update_readme(index):
+    """Replace only the generated diary index section."""
+
+    text = README.read_text(encoding="utf-8")
+
+    pattern = re.compile(
+        rf"{re.escape(START_MARKER)}.*?{re.escape(END_MARKER)}",
+        re.DOTALL,
     )
 
-    return "\n".join(lines)
+    if not pattern.search(text):
+        raise RuntimeError(
+            "Could not find DIARY-INDEX markers in diary/README.md"
+        )
+
+    replacement = (
+        f"{START_MARKER}\n\n"
+        f"{index}\n\n"
+        f"{END_MARKER}"
+    )
+
+    README.write_text(
+        pattern.sub(replacement, text),
+        encoding="utf-8",
+    )
 
 
 def main():
@@ -123,12 +146,13 @@ def main():
     if not entries:
         raise RuntimeError("No valid diary entries found.")
 
-    content = build_readme(entries)
+    index = build_index(entries)
+    update_readme(index)
 
-    # README.md is generated output: overwrite it completely.
-    README.write_text(content, encoding="utf-8")
-
-    print(f"Generated diary/README.md with {len(entries)} entries.")
+    print(
+        f"Updated diary/README.md with "
+        f"{len(entries)} diary entries."
+    )
 
 
 if __name__ == "__main__":
