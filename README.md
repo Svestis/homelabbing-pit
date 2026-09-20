@@ -30,7 +30,7 @@ This isn't meant to be a tutorial or a polished guide. It's the story of my home
 
 <!-- LATEST:END -->
 
-> 🔎 **Looking for something?** `Ctrl+F` / `⌘F` your way through, or head straight to the [**full index**](#-everything-in-the-pit).
+> 🔎 **Looking for something?** `Ctrl+F` / `⌘F` your way through, or head straight to the [**full index**](#everything-in-the-pit).
 
 ## ⛏️ Start digging
 
@@ -110,7 +110,8 @@ And there is an alarming amount of overlap between those three categories.
 
 Still digging. ⛏️
 
-## 🗂️ Everything in the pit
+<a id="everything-in-the-pit"></a>
+# 🗂️ Everything in the pit
 
 Looking for something specific?
 
