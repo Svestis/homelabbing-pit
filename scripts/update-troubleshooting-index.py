@@ -117,7 +117,7 @@ def build_readme(records):
             "",
             "---",
             "",
-            "🕳️ **Status:** somehow still troubleshooting. 🔧",
+            "[← Back to the diary](../)",
             "",
         ]
     )

@@ -114,7 +114,7 @@ def build_readme(incidents):
             "",
             "---",
             "",
-            "🕳️ **Status:** incidents will happen.",
+            "[← Back to the diary](../)",
             "",
         ]
     )
