@@ -11,14 +11,17 @@ TROUBLESHOOTING_DIR = DIARY_DIR / "troubleshooting"
 
 README = ROOT / "README.md"
 
-START_MARKER = "<!-- LATEST:START -->"
-END_MARKER = "<!-- LATEST:END -->"
+LATEST_START_MARKER = "<!-- LATEST:START -->"
+LATEST_END_MARKER = "<!-- LATEST:END -->"
+
+PIT_INDEX_START_MARKER = "<!-- PIT-INDEX:START -->"
+PIT_INDEX_END_MARKER = "<!-- PIT-INDEX:END -->"
 
 LATEST_COUNT = 3
 
 
 def read_frontmatter(path: Path) -> dict:
-    """Read the YAML frontmatter fields needed for the latest entries."""
+    """Read the YAML frontmatter fields needed for the indexes."""
 
     text = path.read_text(encoding="utf-8")
 
@@ -135,7 +138,7 @@ def find_records():
 
 
 def build_latest(records):
-    """Generate the latest entries section."""
+    """Generate the Latest from the pit section."""
 
     latest = records[:LATEST_COUNT]
 
@@ -159,29 +162,73 @@ def build_latest(records):
     return "\n".join(lines)
 
 
-def update_readme(latest):
-    """Replace only the generated Latest from the pit section."""
+def build_pit_index(records):
+    """Generate the complete Everything in the pit index."""
 
-    text = README.read_text(encoding="utf-8")
+    lines = [
+        "> 🤖 **Generated automatically:** "
+        "This index is rebuilt from repository metadata.",
+        "",
+        "| Type | # | Date | Entry |",
+        "|---|---:|---|---|",
+    ]
+
+    for item in records:
+        relative_path = item["path"].relative_to(ROOT).as_posix()
+        date = item["date"].strftime("%Y-%m-%d")
+
+        lines.append(
+            f"| {item['type']} | `{item['entry']}` | "
+            f"{date} | [{item['title']}]({relative_path}) |"
+        )
+
+    return "\n".join(lines)
+
+
+def replace_section(text, start_marker, end_marker, content):
+    """Replace a generated section between two markers."""
 
     pattern = re.compile(
-        rf"{re.escape(START_MARKER)}.*?{re.escape(END_MARKER)}",
+        rf"{re.escape(start_marker)}.*?{re.escape(end_marker)}",
         re.DOTALL,
     )
 
     if not pattern.search(text):
         raise RuntimeError(
-            "Could not find LATEST markers in README.md"
+            f"Could not find markers: "
+            f"{start_marker} / {end_marker}"
         )
 
     replacement = (
-        f"{START_MARKER}\n\n"
-        f"{latest}\n\n"
-        f"{END_MARKER}"
+        f"{start_marker}\n\n"
+        f"{content}\n\n"
+        f"{end_marker}"
+    )
+
+    return pattern.sub(replacement, text)
+
+
+def update_readme(latest, pit_index):
+    """Update the generated sections in the root README."""
+
+    text = README.read_text(encoding="utf-8")
+
+    text = replace_section(
+        text,
+        LATEST_START_MARKER,
+        LATEST_END_MARKER,
+        latest,
+    )
+
+    text = replace_section(
+        text,
+        PIT_INDEX_START_MARKER,
+        PIT_INDEX_END_MARKER,
+        pit_index,
     )
 
     README.write_text(
-        pattern.sub(replacement, text),
+        text,
         encoding="utf-8",
     )
 
@@ -193,11 +240,14 @@ def main():
         raise RuntimeError("No valid records found.")
 
     latest = build_latest(records)
-    update_readme(latest)
+    pit_index = build_pit_index(records)
+
+    update_readme(latest, pit_index)
 
     print(
         f"Updated root README with "
-        f"{min(LATEST_COUNT, len(records))} latest record(s)."
+        f"{min(LATEST_COUNT, len(records))} latest record(s) "
+        f"and {len(records)} total record(s)."
     )
 
 
