@@ -5,6 +5,10 @@ import re
 
 ROOT = Path(__file__).resolve().parent.parent
 DIARY_DIR = ROOT / "diary"
+ENTRIES_DIR = DIARY_DIR / "entries"
+INCIDENTS_DIR = DIARY_DIR / "incidents"
+TROUBLESHOOTING_DIR = DIARY_DIR / "troubleshooting"
+
 README = ROOT / "README.md"
 
 START_MARKER = "<!-- LATEST:START -->"
@@ -47,13 +51,16 @@ def read_frontmatter(path: Path) -> dict:
 def get_record_type(path: Path, entry: str):
     """Determine the record type from its location and entry prefix."""
 
-    if path.parent == DIARY_DIR / "incidents" or entry.startswith("II"):
+    if path.parent == INCIDENTS_DIR or entry.startswith("II"):
         return "🚨 Incident"
 
-    if path.parent == DIARY_DIR / "troubleshooting" or entry.startswith("TS"):
+    if path.parent == TROUBLESHOOTING_DIR or entry.startswith("TS"):
         return "🔧 Troubleshooting"
 
-    return "📖 Diary"
+    if path.parent == ENTRIES_DIR and entry.isdigit():
+        return "📖 Diary"
+
+    return None
 
 
 def find_records():
@@ -63,17 +70,17 @@ def find_records():
 
     # Main diary entries.
     paths.extend(
-        DIARY_DIR.glob("20[0-9][0-9]/[0-9][0-9]/*.md")
+        ENTRIES_DIR.glob("[0-9][0-9][0-9][0-9]-*.md")
     )
 
     # Infrastructure incidents.
     paths.extend(
-        (DIARY_DIR / "incidents").glob("II*.md")
+        INCIDENTS_DIR.glob("II*.md")
     )
 
     # Troubleshooting records.
     paths.extend(
-        (DIARY_DIR / "troubleshooting").glob("TS*.md")
+        TROUBLESHOOTING_DIR.glob("TS*.md")
     )
 
     records = []
@@ -92,6 +99,15 @@ def find_records():
             )
             continue
 
+        record_type = get_record_type(path, entry)
+
+        if not record_type:
+            print(
+                f"Skipping {path}: "
+                "unrecognized record type"
+            )
+            continue
+
         try:
             parsed_date = datetime.strptime(date, "%Y-%m-%d")
         except ValueError:
@@ -103,7 +119,7 @@ def find_records():
                 "entry": entry,
                 "date": parsed_date,
                 "title": title,
-                "type": get_record_type(path, entry),
+                "type": record_type,
                 "path": path,
             }
         )
