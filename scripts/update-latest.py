@@ -5,9 +5,11 @@ import re
 
 ROOT = Path(__file__).resolve().parent.parent
 DIARY_DIR = ROOT / "diary"
+
 ENTRIES_DIR = DIARY_DIR / "entries"
 INCIDENTS_DIR = DIARY_DIR / "incidents"
 TROUBLESHOOTING_DIR = DIARY_DIR / "troubleshooting"
+PROJECTS_DIR = DIARY_DIR / "projects"
 
 README = ROOT / "README.md"
 
@@ -21,7 +23,7 @@ LATEST_COUNT = 3
 
 
 def read_frontmatter(path: Path) -> dict:
-    """Read the YAML frontmatter fields needed for the indexes."""
+    """Read simple YAML frontmatter fields from a Markdown file."""
 
     text = path.read_text(encoding="utf-8")
 
@@ -51,44 +53,72 @@ def read_frontmatter(path: Path) -> dict:
     return metadata
 
 
-def get_record_type(path: Path, entry: str):
-    """Determine the record type from its location and entry prefix."""
+def parse_date(path: Path, date: str):
+    """Parse a repository metadata date."""
 
-    if path.parent == INCIDENTS_DIR or entry.startswith("II"):
-        return "🚨 Incident"
-
-    if path.parent == TROUBLESHOOTING_DIR or entry.startswith("TS"):
-        return "🔧 Troubleshooting"
-
-    if path.parent == ENTRIES_DIR and entry.isdigit():
-        return "📖 Diary"
-
-    return None
+    try:
+        return datetime.strptime(date, "%Y-%m-%d")
+    except ValueError:
+        print(
+            f"Skipping {path}: "
+            f"invalid date '{date}'"
+        )
+        return None
 
 
-def find_records():
-    """Find all diary, incident, and troubleshooting records."""
+def load_projects():
+    """
+    Discover projects from metadata in their README files.
 
-    paths = []
+    The root index therefore does not need to know about individual
+    projects such as Home Display in advance.
+    """
 
-    # Main diary entries.
-    paths.extend(
-        ENTRIES_DIR.glob("[0-9][0-9][0-9][0-9]-*.md")
-    )
+    projects = {}
 
-    # Infrastructure incidents.
-    paths.extend(
-        INCIDENTS_DIR.glob("II*.md")
-    )
+    if not PROJECTS_DIR.exists():
+        return projects
 
-    # Troubleshooting records.
-    paths.extend(
-        TROUBLESHOOTING_DIR.glob("TS*.md")
-    )
+    for project_dir in PROJECTS_DIR.iterdir():
+        if not project_dir.is_dir():
+            continue
+
+        project_readme = project_dir / "README.md"
+
+        if not project_readme.exists():
+            continue
+
+        metadata = read_frontmatter(project_readme)
+
+        project = metadata.get("project")
+        title = metadata.get("title")
+        icon = metadata.get("icon", "🧪")
+
+        if not project or not title:
+            print(
+                f"Skipping project {project_dir}: "
+                "missing project or title metadata"
+            )
+            continue
+
+        projects[project] = {
+            "project": project,
+            "title": title,
+            "icon": icon,
+            "path": project_dir,
+        }
+
+    return projects
+
+
+def find_diary_records():
+    """Find numbered main diary entries."""
 
     records = []
 
-    for path in paths:
+    for path in ENTRIES_DIR.glob(
+        "[0-9][0-9][0-9][0-9]-*.md"
+    ):
         metadata = read_frontmatter(path)
 
         entry = metadata.get("entry")
@@ -102,19 +132,16 @@ def find_records():
             )
             continue
 
-        record_type = get_record_type(path, entry)
-
-        if not record_type:
+        if not entry.isdigit():
             print(
                 f"Skipping {path}: "
-                "unrecognized record type"
+                "invalid diary entry number"
             )
             continue
 
-        try:
-            parsed_date = datetime.strptime(date, "%Y-%m-%d")
-        except ValueError:
-            print(f"Skipping {path}: invalid date")
+        parsed_date = parse_date(path, date)
+
+        if not parsed_date:
             continue
 
         records.append(
@@ -122,10 +149,183 @@ def find_records():
                 "entry": entry,
                 "date": parsed_date,
                 "title": title,
-                "type": record_type,
+                "type": "📖 Diary",
                 "path": path,
             }
         )
+
+    return records
+
+
+def find_incident_records():
+    """Find infrastructure incident records."""
+
+    records = []
+
+    for path in INCIDENTS_DIR.glob("II*.md"):
+        metadata = read_frontmatter(path)
+
+        entry = metadata.get("entry")
+        date = metadata.get("date")
+        title = metadata.get("title")
+
+        if not entry or not date or not title:
+            print(
+                f"Skipping {path}: "
+                "missing entry, date, or title"
+            )
+            continue
+
+        if not entry.startswith("II"):
+            print(
+                f"Skipping {path}: "
+                "invalid incident entry"
+            )
+            continue
+
+        parsed_date = parse_date(path, date)
+
+        if not parsed_date:
+            continue
+
+        records.append(
+            {
+                "entry": entry,
+                "date": parsed_date,
+                "title": title,
+                "type": "🚨 Incident",
+                "path": path,
+            }
+        )
+
+    return records
+
+
+def find_troubleshooting_records():
+    """Find troubleshooting records."""
+
+    records = []
+
+    for path in TROUBLESHOOTING_DIR.glob("TS*.md"):
+        metadata = read_frontmatter(path)
+
+        entry = metadata.get("entry")
+        date = metadata.get("date")
+        title = metadata.get("title")
+
+        if not entry or not date or not title:
+            print(
+                f"Skipping {path}: "
+                "missing entry, date, or title"
+            )
+            continue
+
+        if not entry.startswith("TS"):
+            print(
+                f"Skipping {path}: "
+                "invalid troubleshooting entry"
+            )
+            continue
+
+        parsed_date = parse_date(path, date)
+
+        if not parsed_date:
+            continue
+
+        records.append(
+            {
+                "entry": entry,
+                "date": parsed_date,
+                "title": title,
+                "type": "🔧 Troubleshooting",
+                "path": path,
+            }
+        )
+
+    return records
+
+
+def find_project_records(projects):
+    """
+    Find journal records belonging to discovered projects.
+
+    Only project journal entries are promoted to the root chronological
+    indexes. Designs, examples, screenshots, and other supporting files
+    remain inside their project indexes.
+    """
+
+    records = []
+
+    for project_name, project in projects.items():
+        journal_dir = project["path"] / "journal"
+
+        if not journal_dir.exists():
+            continue
+
+        for path in journal_dir.glob("*.md"):
+            metadata = read_frontmatter(path)
+
+            entry = metadata.get("entry")
+            date = metadata.get("date")
+            title = metadata.get("title")
+            record_project = metadata.get("project")
+            record_type = metadata.get("type", "journal")
+
+            if not entry or not date or not title or not record_project:
+                print(
+                    f"Skipping {path}: "
+                    "missing entry, date, title, or project"
+                )
+                continue
+
+            if record_project != project_name:
+                print(
+                    f"Skipping {path}: "
+                    f"project '{record_project}' does not match "
+                    f"parent project '{project_name}'"
+                )
+                continue
+
+            if record_type != "journal":
+                print(
+                    f"Skipping {path}: "
+                    f"unsupported project record type "
+                    f"'{record_type}'"
+                )
+                continue
+
+            parsed_date = parse_date(path, date)
+
+            if not parsed_date:
+                continue
+
+            records.append(
+                {
+                    "entry": entry,
+                    "date": parsed_date,
+                    "title": title,
+                    "type": (
+                        f"{project['icon']} "
+                        f"{project['title']}"
+                    ),
+                    "path": path,
+                }
+            )
+
+    return records
+
+
+def find_records():
+    """Find every chronological record included in the root indexes."""
+
+    projects = load_projects()
+
+    records = []
+
+    records.extend(find_diary_records())
+    records.extend(find_incident_records())
+    records.extend(find_troubleshooting_records())
+    records.extend(find_project_records(projects))
 
     return sorted(
         records,
@@ -151,12 +351,17 @@ def build_latest(records):
     ]
 
     for item in latest:
-        relative_path = item["path"].relative_to(ROOT).as_posix()
+        relative_path = item["path"].relative_to(
+            ROOT
+        ).as_posix()
+
         date = item["date"].strftime("%Y-%m-%d")
 
         lines.append(
-            f"| {item['type']} | `{item['entry']}` | "
-            f"{date} | [{item['title']}]({relative_path}) |"
+            f"| {item['type']} | "
+            f"`{item['entry']}` | "
+            f"{date} | "
+            f"[{item['title']}]({relative_path}) |"
         )
 
     return "\n".join(lines)
@@ -174,22 +379,34 @@ def build_pit_index(records):
     ]
 
     for item in records:
-        relative_path = item["path"].relative_to(ROOT).as_posix()
+        relative_path = item["path"].relative_to(
+            ROOT
+        ).as_posix()
+
         date = item["date"].strftime("%Y-%m-%d")
 
         lines.append(
-            f"| {item['type']} | `{item['entry']}` | "
-            f"{date} | [{item['title']}]({relative_path}) |"
+            f"| {item['type']} | "
+            f"`{item['entry']}` | "
+            f"{date} | "
+            f"[{item['title']}]({relative_path}) |"
         )
 
     return "\n".join(lines)
 
 
-def replace_section(text, start_marker, end_marker, content):
+def replace_section(
+    text,
+    start_marker,
+    end_marker,
+    content,
+):
     """Replace a generated section between two markers."""
 
     pattern = re.compile(
-        rf"{re.escape(start_marker)}.*?{re.escape(end_marker)}",
+        rf"{re.escape(start_marker)}"
+        rf".*?"
+        rf"{re.escape(end_marker)}",
         re.DOTALL,
     )
 
@@ -205,13 +422,18 @@ def replace_section(text, start_marker, end_marker, content):
         f"{end_marker}"
     )
 
-    return pattern.sub(replacement, text)
+    return pattern.sub(
+        replacement,
+        text,
+    )
 
 
 def update_readme(latest, pit_index):
     """Update the generated sections in the root README."""
 
-    text = README.read_text(encoding="utf-8")
+    text = README.read_text(
+        encoding="utf-8"
+    )
 
     text = replace_section(
         text,
@@ -237,17 +459,23 @@ def main():
     records = find_records()
 
     if not records:
-        raise RuntimeError("No valid records found.")
+        raise RuntimeError(
+            "No valid records found."
+        )
 
     latest = build_latest(records)
     pit_index = build_pit_index(records)
 
-    update_readme(latest, pit_index)
+    update_readme(
+        latest,
+        pit_index,
+    )
 
     print(
         f"Updated root README with "
-        f"{min(LATEST_COUNT, len(records))} latest record(s) "
-        f"and {len(records)} total record(s)."
+        f"{min(LATEST_COUNT, len(records))} "
+        f"latest record(s) and "
+        f"{len(records)} total record(s)."
     )
 
 

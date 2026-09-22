@@ -14,10 +14,20 @@ on:
       # Troubleshooting records
       - "diary/troubleshooting/TS*.md"
 
+      # Project definitions
+      - "diary/projects/*/README.md"
+
+      # Project records
+      - "diary/projects/*/journal/*.md"
+      - "diary/projects/*/designs/*.md"
+      - "diary/projects/*/examples/*.md"
+
       # Index generators
       - "scripts/update-diary-index.py"
       - "scripts/update-incidents-index.py"
       - "scripts/update-troubleshooting-index.py"
+      - "scripts/update-projects-index.py"
+      - "scripts/update-project-index.py"
       - "scripts/update-latest.py"
 
   workflow_dispatch:
@@ -47,6 +57,12 @@ jobs:
       - name: Generate troubleshooting index
         run: python3 scripts/update-troubleshooting-index.py
 
+      - name: Generate projects index
+        run: python3 scripts/update-projects-index.py
+
+      - name: Generate project indexes
+        run: python3 scripts/update-project-index.py
+
       - name: Generate latest entries
         run: python3 scripts/update-latest.py
 
@@ -56,7 +72,9 @@ jobs:
             README.md \
             diary/README.md \
             diary/incidents/README.md \
-            diary/troubleshooting/README.md; then
+            diary/troubleshooting/README.md \
+            diary/projects/README.md \
+            'diary/projects/*/README.md'; then
             echo "All indexes rebuilt successfully — no changes required."
             exit 0
           fi
@@ -68,7 +86,9 @@ jobs:
             README.md \
             diary/README.md \
             diary/incidents/README.md \
-            diary/troubleshooting/README.md
+            diary/troubleshooting/README.md \
+            diary/projects/README.md \
+            'diary/projects/*/README.md'
 
           git commit -m "docs: rebuild diary indexes"
           git push
