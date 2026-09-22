@@ -23,6 +23,7 @@ Along the way, some things broke, some problems became investigations of their o
 
 | # | Date | Entry |
 |---:|---|---|
+| `0011` | 2026-09-22 | [The VM was never supposed to become a server](entries/0011-the-vm-was-never-supposed-to-become-a-server.md) |
 | `0010` | 2026-09-19 | [I should probably manage the host too](entries/0010-i-should-probably-manage-the-host-too.md) |
 | `0009` | 2026-09-18 | [Do I need a NAS?](entries/0009-do-i-need-a-nas.md) |
 | `0008` | 2026-09-17 | [The homelab needs a screen](entries/0008-the-homelab-needs-a-screen.md) |

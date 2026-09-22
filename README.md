@@ -24,9 +24,9 @@ This isn't meant to be a tutorial or a polished guide. It's the story of my home
 
 | Type | # | Date | Entry |
 |---|---:|---|---|
+| 📖 Diary | `0011` | 2026-09-22 | [The VM was never supposed to become a server](diary/entries/0011-the-vm-was-never-supposed-to-become-a-server.md) |
 | 🚨 Incident | `II02` | 2026-09-20 | [Kopia woke up before the clock](diary/incidents/II02-kopia-woke-up-before-the-clock.md) |
 | 📖 Diary | `0010` | 2026-09-19 | [I should probably manage the host too](diary/entries/0010-i-should-probably-manage-the-host-too.md) |
-| 📖 Diary | `0009` | 2026-09-18 | [Do I need a NAS?](diary/entries/0009-do-i-need-a-nas.md) |
 
 <!-- LATEST:END -->
 
@@ -123,6 +123,7 @@ This is the complete index of everything documented in the pit.
 
 | Type | # | Date | Entry |
 |---|---:|---|---|
+| 📖 Diary | `0011` | 2026-09-22 | [The VM was never supposed to become a server](diary/entries/0011-the-vm-was-never-supposed-to-become-a-server.md) |
 | 🚨 Incident | `II02` | 2026-09-20 | [Kopia woke up before the clock](diary/incidents/II02-kopia-woke-up-before-the-clock.md) |
 | 📖 Diary | `0010` | 2026-09-19 | [I should probably manage the host too](diary/entries/0010-i-should-probably-manage-the-host-too.md) |
 | 📖 Diary | `0009` | 2026-09-18 | [Do I need a NAS?](diary/entries/0009-do-i-need-a-nas.md) |
