@@ -9,6 +9,13 @@ Projects are different. They are the things that kept growing — builds, experi
 ## 🕳️ What's growing?
 
 <!-- PROJECTS-INDEX:START -->
+
+> 🤖 **Generated automatically:** This index is rebuilt from project metadata.
+
+| Project | Status | Started | Last updated | Description |
+|---|---|---|---|---|
+| 🧪 [Home Display](home-display/) | Active | 2026-09-17 | — | A home dashboard built for the living-room TV. |
+
 <!-- PROJECTS-INDEX:END -->
 
 ---

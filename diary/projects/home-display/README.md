@@ -107,6 +107,11 @@ Everything documented inside this project will appear here automatically.
 
 <!-- PROJECT-INDEX:START -->
 
+> 🤖 **Generated automatically:** This index is rebuilt from project metadata.
+
+| Type | # | Date | Entry | Status |
+|---|---:|---|---|---|
+
 <!-- PROJECT-INDEX:END -->
 
 ---
