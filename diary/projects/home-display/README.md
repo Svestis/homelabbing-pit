@@ -111,6 +111,7 @@ Everything documented inside this project will appear here automatically.
 
 | Type | # | Date | Entry | Status |
 |---|---:|---|---|---|
+| 📖 Journal | `HD001` | 2026-09-22 | [I just wanted the photos somewhere we could see them](journal/HD001-i-just-wanted-the-photos-somewhere-we-could-see-them.md) | Complete |
 
 <!-- PROJECT-INDEX:END -->
 
