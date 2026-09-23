@@ -1,9 +1,10 @@
 ---
 project: home-display
-title: "🖥️ Home Display"
+title: "ome Display"
 description: "A home dashboard built for the living-room TV."
 status: active
 started: 2026-09-17
+icon: "🖥️"
 ---
 
 # 🖥️ Home Display
