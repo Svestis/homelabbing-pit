@@ -14,7 +14,7 @@ Projects are different. They are the things that kept growing — builds, experi
 
 | Project | Status | Started | Last updated | Description |
 |---|---|---|---|---|
-| 🖥️ [ome Display](home-display/) | Active | 2026-09-17 | 2026-09-22 | A home dashboard built for the living-room TV. |
+| 🖥️ [Home Display](home-display/) | Active | 2026-09-17 | 2026-09-22 | A home dashboard built for the living-room TV. |
 
 <!-- PROJECTS-INDEX:END -->
 
