@@ -24,7 +24,7 @@ This isn't meant to be a tutorial or a polished guide. It's the story of my home
 
 | Type | # | Date | Entry |
 |---|---:|---|---|
-| 🧪 Home Display | `HD001` | 2026-09-22 | [I just wanted the photos somewhere we could see them](diary/projects/home-display/journal/HD001-i-just-wanted-the-photos-somewhere-we-could-see-them.md) |
+| 🧪 🖥️ Home Display | `HD001` | 2026-09-22 | [I just wanted the photos somewhere we could see them](diary/projects/home-display/journal/HD001-i-just-wanted-the-photos-somewhere-we-could-see-them.md) |
 | 📖 Diary | `0011` | 2026-09-22 | [The VM was never supposed to become a server](diary/entries/0011-the-vm-was-never-supposed-to-become-a-server.md) |
 | 🚨 Incident | `II02` | 2026-09-20 | [Kopia woke up before the clock](diary/incidents/II02-kopia-woke-up-before-the-clock.md) |
 
@@ -123,7 +123,7 @@ This is the complete index of everything documented in the pit.
 
 | Type | # | Date | Entry |
 |---|---:|---|---|
-| 🧪 Home Display | `HD001` | 2026-09-22 | [I just wanted the photos somewhere we could see them](diary/projects/home-display/journal/HD001-i-just-wanted-the-photos-somewhere-we-could-see-them.md) |
+| 🧪 🖥️ Home Display | `HD001` | 2026-09-22 | [I just wanted the photos somewhere we could see them](diary/projects/home-display/journal/HD001-i-just-wanted-the-photos-somewhere-we-could-see-them.md) |
 | 📖 Diary | `0011` | 2026-09-22 | [The VM was never supposed to become a server](diary/entries/0011-the-vm-was-never-supposed-to-become-a-server.md) |
 | 🚨 Incident | `II02` | 2026-09-20 | [Kopia woke up before the clock](diary/incidents/II02-kopia-woke-up-before-the-clock.md) |
 | 📖 Diary | `0010` | 2026-09-19 | [I should probably manage the host too](diary/entries/0010-i-should-probably-manage-the-host-too.md) |
